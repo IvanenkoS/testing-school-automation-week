@@ -10,14 +10,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Created by okunev on 8/3/2016.
  */
-public class SmokeTest {
+public class UITest {
 
     private WebDriver driver;
 
@@ -55,17 +54,48 @@ public class SmokeTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Create list of WebElements
-        List<WebElement> lblTomMenuItems = driver.findElements(By.xpath("//ul[@class='top-menu']/li/a"));
-        Assert.assertTrue(lblTomMenuItems.size() == 7);
+        List<WebElement> lblTopMenuItems = driver.findElements(By.xpath("//ul[@class='top-menu']/li/a"));
+        Assert.assertTrue(lblTopMenuItems.size() == 7);
 
         //Save all menuItems values to List
-        List<String> menuItems = new ArrayList<>();
-        for (WebElement element : lblTomMenuItems) {
+        List<String> menuItems = new ArrayList<String>();
+        for (WebElement element : lblTopMenuItems) {
             menuItems.add(element.getText());
         }
 
         //Verify List contains all values
         Assert.assertTrue(menuItems.containsAll(Arrays.asList("BOOKS", "COMPUTERS", "ELECTRONICS", "APPAREL & SHOES", "DIGITAL DOWNLOADS", "JEWELRY", "GIFT CARDS")));
+    }
+
+    @Test
+    public void verifyCategoriesIsCorrect() {
+        //Open firefox
+        driver = new FirefoxDriver();
+
+        //Navigate to application url
+        driver.get("http://demowebshop.tricentis.com");
+
+        //Maximize browser window
+        driver.manage().window().maximize();
+
+        //Set implicitly wait. Wait will be triggered when element is not present
+        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+
+        //Create list of WebElements
+        List<WebElement> lblSideMenuItems = driver.findElements(By.cssSelector(".block-category-navigation li a"));
+        Assert.assertTrue(lblSideMenuItems.size() == 7);
+
+        WebElement lblCategory = driver.findElement(By.cssSelector(".block-category-navigation .title strong"));
+        Assert.assertEquals("CATEGORIES", lblCategory.getText());
+
+        //Save all menuItems values to List
+        List<String> menuItems = new ArrayList<String>();
+        for (WebElement element : lblSideMenuItems) {
+            menuItems.add(element.getText());
+        }
+
+        //Verify List contains all values
+        Assert.assertTrue(menuItems.containsAll(Arrays.asList("Books", "Computers", "Electronics", "Apparel & Shoes", "Digital downloads", "Jewelry", "Gift Cards")));
     }
 
     @After
