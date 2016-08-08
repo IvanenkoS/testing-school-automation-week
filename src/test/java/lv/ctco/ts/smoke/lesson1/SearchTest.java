@@ -3,6 +3,7 @@ package lv.ctco.ts.smoke.lesson1;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -17,7 +18,7 @@ public class SearchTest {
     private WebDriver driver;
 
     @Test
-    public void verifySearchWorkingProperly(){
+    public void verifySearchWorkingProperly() {
         driver = new FirefoxDriver();
 
         //Navigate to application url
@@ -44,5 +45,43 @@ public class SearchTest {
 
         //Close browser
         driver.quit();
+    }
+
+    @Test
+    public void verifyAlertMessage() {
+        driver = new FirefoxDriver();
+
+        //Navigate to application url
+        driver.get("http://demowebshop.tricentis.com");
+
+        //Maximize browser window
+        driver.manage().window().maximize();
+
+        //Set implicitly wait. Wait will be triggered when element is not present
+        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+
+        //Find button Search
+        WebElement btnSearch = driver.findElement(By.cssSelector(".search-box input[value='Search']"));
+        btnSearch.click();
+
+        //Verify alert is present
+        Assert.assertTrue(verifyAlertIsPresent());
+        Assert.assertEquals("Please enter some search keyword", driver.switchTo().alert().getText());
+
+        //Close alert
+        driver.switchTo().alert().accept();
+        Assert.assertFalse(verifyAlertIsPresent());
+
+        //Close browser
+        driver.quit();
+    }
+
+    public Boolean verifyAlertIsPresent() {
+        try {
+            driver.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException Ex) {
+            return false;
+        }
     }
 }
