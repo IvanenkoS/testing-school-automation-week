@@ -30,69 +30,69 @@ public class HappyPathTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find input field Search
-        WebElement txtSearch = driver.findElement(By.id("small-searchterms"));
+        WebElement txtSearch = driver.findElement(By.id(""));
         txtSearch.sendKeys("blue and green");
 
         //Find button Search
-        WebElement btnSearch = driver.findElement(By.cssSelector(".search-box input[value='Search']"));
+        WebElement btnSearch = driver.findElement(By.cssSelector(""));
         btnSearch.click();
 
         //Click on product
-        WebElement lnkProduct = driver.findElement(By.cssSelector(".product-item .product-title a"));
+        WebElement lnkProduct = driver.findElement(By.cssSelector(""));
         lnkProduct.click();
 
         //Add to cart
-        WebElement btnAddToCart = driver.findElement(By.cssSelector(".add-to-cart [value='Add to cart']"));
+        WebElement btnAddToCart = driver.findElement(By.cssSelector(""));
         btnAddToCart.click();
 
         //Wait for Ajax element invisibility
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ajax-loading-block-window")));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
         //Go to Shopping cart
-        WebElement lnkShoppingCart = driver.findElement(By.xpath("//li[@id='topcartlink']/a"));
+        WebElement lnkShoppingCart = driver.findElement(By.xpath(""));
         lnkShoppingCart.click();
 
         //Checkout
-        WebElement cbxIAgree = driver.findElement(By.cssSelector("#termsofservice"));
-        WebElement btnCheckout = driver.findElement(By.cssSelector("#checkout"));
+        WebElement cbxIAgree = driver.findElement(By.cssSelector(""));
+        WebElement btnCheckout = driver.findElement(By.cssSelector(""));
         cbxIAgree.click();
         btnCheckout.click();
 
-        WebElement btnCheckoutAsGuest = driver.findElement(By.cssSelector("[value='Checkout as Guest']"));
+        WebElement btnCheckoutAsGuest = driver.findElement(By.cssSelector(""));
         btnCheckoutAsGuest.click();
 
         //Provide billing information
-        driver.findElement(By.id("BillingNewAddress_FirstName")).sendKeys("FirstNameT");
-        driver.findElement(By.id("BillingNewAddress_LastName")).sendKeys("LastNameT");
-        driver.findElement(By.id("BillingNewAddress_Email")).sendKeys("email@Test.lv");
-        new Select(driver.findElement(By.id("BillingNewAddress_CountryId"))).selectByVisibleText("Latvia");
-        driver.findElement(By.id("BillingNewAddress_City")).sendKeys("Riga");
-        driver.findElement(By.id("BillingNewAddress_Address1")).sendKeys("Test Street");
-        driver.findElement(By.id("BillingNewAddress_ZipPostalCode")).sendKeys("LV-6789");
-        driver.findElement(By.id("BillingNewAddress_PhoneNumber")).sendKeys("23456789");
-        driver.findElement(By.cssSelector("#opc-billing input[value='Continue']")).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
+        driver.findElement(By.id("")).sendKeys("FirstNameT");
+        driver.findElement(By.id("")).sendKeys("LastNameT");
+        driver.findElement(By.id("")).sendKeys("email@Test.lv");
+        new Select(driver.findElement(By.id(""))).selectByVisibleText("Latvia");
+        driver.findElement(By.id("")).sendKeys("Riga");
+        driver.findElement(By.id("")).sendKeys("Test Street");
+        driver.findElement(By.id("")).sendKeys("LV-6789");
+        driver.findElement(By.id("")).sendKeys("23456789");
+        driver.findElement(By.cssSelector("")).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
-        driver.findElement(By.cssSelector("#opc-shipping input[value='Continue']")).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
+        driver.findElement(By.cssSelector("")).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
-        driver.findElement(By.cssSelector("#opc-shipping_method input[value='Continue']")).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
+        driver.findElement(By.cssSelector("")).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
-        driver.findElement(By.cssSelector("#opc-payment_method input[value='Continue']")).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
+        driver.findElement(By.cssSelector("")).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
-        driver.findElement(By.cssSelector("#opc-payment_info input[value='Continue']")).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
+        driver.findElement(By.cssSelector("")).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
-        driver.findElement(By.cssSelector("#confirm-order-buttons-container [value='Confirm']")).click();
-        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
+        driver.findElement(By.cssSelector("")).click();
+        new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
 
         //Verify order is completed
-        WebElement lblMessage = driver.findElement(By.cssSelector(".order-completed .title strong"));
+        WebElement lblMessage = driver.findElement(By.cssSelector(""));
         Assert.assertEquals("Your order has been successfully processed!", lblMessage.getText());
-        driver.findElement(By.cssSelector("input[value='Continue']")).click();
-        Assert.assertTrue(driver.findElement(By.cssSelector("#nivo-slider")).isDisplayed());
+        driver.findElement(By.cssSelector("")).click();
+        Assert.assertTrue(driver.findElement(By.cssSelector("")).isDisplayed());
 
         //Close browser
         driver.quit();

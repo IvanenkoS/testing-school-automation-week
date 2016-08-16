@@ -35,7 +35,7 @@ public class UITest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Verify Logo is displayed
-        WebElement lblLogo = driver.findElement(By.cssSelector(".header-logo"));
+        WebElement lblLogo = driver.findElement(By.cssSelector(""));
         Assert.assertTrue(lblLogo.isDisplayed());
     }
 
@@ -54,7 +54,7 @@ public class UITest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Create list of WebElements
-        List<WebElement> lblTopMenuItems = driver.findElements(By.xpath("//ul[@class='top-menu']/li/a"));
+        List<WebElement> lblTopMenuItems = driver.findElements(By.xpath(""));
         Assert.assertTrue(lblTopMenuItems.size() == 7);
 
         //Save all menuItems values to List
@@ -82,10 +82,10 @@ public class UITest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Create list of WebElements
-        List<WebElement> lblSideMenuItems = driver.findElements(By.cssSelector(".block-category-navigation li a"));
+        List<WebElement> lblSideMenuItems = driver.findElements(By.cssSelector(""));
         Assert.assertTrue(lblSideMenuItems.size() == 7);
 
-        WebElement lblCategory = driver.findElement(By.cssSelector(".block-category-navigation .title strong"));
+        WebElement lblCategory = driver.findElement(By.cssSelector(""));
         Assert.assertEquals("CATEGORIES", lblCategory.getText());
 
         //Save all menuItems values to List

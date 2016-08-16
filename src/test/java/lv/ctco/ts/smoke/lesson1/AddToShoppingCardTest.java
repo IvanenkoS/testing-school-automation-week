@@ -31,24 +31,24 @@ public class AddToShoppingCardTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find and Create web element Apparel And Shoes
-        WebElement lnkApparelAndShoesTopMenu = driver.findElement(By.xpath("//ul[@class='top-menu']/li/a[contains(text(),'Apparel & Shoes')]"));
+        WebElement lnkApparelAndShoesTopMenu = driver.findElement(By.xpath(""));
 
         //Click at Apparel And Shoes element
         lnkApparelAndShoesTopMenu.click();
 
         //Add to chart Blue Jeans
-        WebElement btnAddChartBlueJeans = driver.findElement(By.xpath("//h2[./a[.='Blue Jeans']]/following-sibling::div[@class='add-info']//input[@type='button']"));
+        WebElement btnAddChartBlueJeans = driver.findElement(By.xpath(""));
         btnAddChartBlueJeans.click();
 
         //Wait for Ajax element invisibility
         new WebDriverWait(driver, 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ajax-loading-block-window")));
 
         //Go to Shopping chart
-        WebElement lnkShoppingCart=driver.findElement(By.cssSelector("#topcartlink"));
+        WebElement lnkShoppingCart=driver.findElement(By.cssSelector(""));
         lnkShoppingCart.click();
 
         //Verify then product appears in shopping cart
-        WebElement lblProduct=driver.findElement(By.xpath("//tr[@class='cart-item-row']/td[@class='product']/a"));
+        WebElement lblProduct=driver.findElement(By.xpath(""));
         Assert.assertEquals("Blue Jeans", lblProduct.getText());
     }
 

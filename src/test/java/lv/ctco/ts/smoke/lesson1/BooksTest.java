@@ -38,34 +38,34 @@ public class BooksTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find and Create web element Books
-        WebElement linkBooksTopMenu = driver.findElement(By.xpath("//ul[@class='top-menu']/li/a[contains(text(),'Books')]"));
+        WebElement linkBooksTopMenu = driver.findElement(By.xpath(""));
 
         //Click at Books element
         linkBooksTopMenu.click();
 
         //Find Sorting products element
-        Select select = new Select(driver.findElement(By.xpath("//select[@id='products-orderby']")));
+        Select select = new Select(driver.findElement(By.xpath("")));
 
         //Sort products by name
         select.selectByVisibleText("Name: A to Z");
 
         //Add to cart Computer and Internet book
-        WebElement btnAddChartBlueJeans = driver.findElement(By.xpath("//h2[./a[.='Computing and Internet']]/following-sibling::div[@class='add-info']//input[@type='button']"));
+        WebElement btnAddChartBlueJeans = driver.findElement(By.xpath(""));
         btnAddChartBlueJeans.click();
 
         //Close cart popup
-        WebElement closeButton = driver.findElement(By.xpath("//span[@class='close']"));
+        WebElement closeButton = driver.findElement(By.xpath(""));
         closeButton.click();
 
         //Wait for Ajax element invisibility
         new WebDriverWait(driver, 20).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ajax-loading-block-window")));
 
         //Go to Shopping chart
-        WebElement lnkShoppingCart=driver.findElement(By.cssSelector("#topcartlink"));
+        WebElement lnkShoppingCart=driver.findElement(By.cssSelector(""));
         lnkShoppingCart.click();
 
         //Verify then product appears in shopping cart
-        WebElement lblProduct=driver.findElement(By.xpath("//tr[@class='cart-item-row']/td[@class='product']/a"));
+        WebElement lblProduct=driver.findElement(By.xpath(""));
         Assert.assertEquals("Computing and Internet", lblProduct.getText());
     }
 

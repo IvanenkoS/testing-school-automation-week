@@ -31,15 +31,15 @@ public class SearchTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find input field Search
-        WebElement txtSearch = driver.findElement(By.id("small-searchterms"));
+        WebElement txtSearch = driver.findElement(By.id(""));
         txtSearch.sendKeys("$100 Physical Gift Card");
 
         //Find button Search
-        WebElement btnSearch = driver.findElement(By.cssSelector(".search-box input[value='Search']"));
+        WebElement btnSearch = driver.findElement(By.cssSelector(""));
         btnSearch.click();
 
         //Verify correct product is found
-        WebElement lblProduct = driver.findElement(By.cssSelector(".product-item .product-title a"));
+        WebElement lblProduct = driver.findElement(By.cssSelector(""));
         Assert.assertTrue(lblProduct.isDisplayed());
         Assert.assertEquals("$100 Physical Gift Card", lblProduct.getText());
 
@@ -61,7 +61,7 @@ public class SearchTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find button Search
-        WebElement btnSearch = driver.findElement(By.cssSelector(".search-box input[value='Search']"));
+        WebElement btnSearch = driver.findElement(By.cssSelector(""));
         btnSearch.click();
 
         //Verify alert is present
