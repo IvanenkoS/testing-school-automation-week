@@ -16,6 +16,7 @@ public class RegularPageModel {
         return driver.findElement(By.id("small-searchterms"));
     }
 
+
     public WebElement getBtnSearch() {
         return driver.findElement(By.cssSelector(".search-box input[value='Search']"));
     }
