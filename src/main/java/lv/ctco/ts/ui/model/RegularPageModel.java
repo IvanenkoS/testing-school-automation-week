@@ -17,10 +17,18 @@ public class RegularPageModel {
     }
 
     public WebElement getBtnSearch() {
-        return driver.findElement(By.id(".search-box input[value='Search']"));
+        return driver.findElement(By.cssSelector(".search-box input[value='Search']"));
     }
 
     public WebElement getLnkProduct() {
-        return driver.findElement(By.id(".product-item .product-title a"));
+        return driver.findElement(By.cssSelector(".product-item .product-title a"));
+    }
+
+    public WebElement btnAddToCart() {
+        return driver.findElement(By.xpath("//input[@value='Add to cart']"));
+    }
+
+    public WebElement getShoppingCart() {
+        return driver.findElement(By.cssSelector(".ico-cart .cart-label"));
     }
 }
