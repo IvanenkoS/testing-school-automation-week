@@ -1,5 +1,6 @@
 package lv.ctco.ts.smoke.lesson1;
 
+import lv.ctco.ts.base.TestStarter;
 import lv.ctco.ts.ui.model.JurisRegisterPageModel;
 import lv.ctco.ts.ui.model.JurisRegisterPageModel;
 import org.junit.Assert;
@@ -16,10 +17,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by yuris.vencels on 8/16/2016.
  */
-public class JurisRegistrationTest {
-
-
-    private WebDriver driver;
+public class JurisRegistrationTest  extends TestStarter {
 
     Random r = new Random();
     int Low = 10000;
@@ -28,20 +26,10 @@ public class JurisRegistrationTest {
 
     @Test
     public void verifyRegistrationWorkingProperly() {
-        driver = new FirefoxDriver();
-        JurisRegisterPageModel registerPageModel = new JurisRegisterPageModel(driver);
 
-        //Navigate to application url
-        driver.get("http://demowebshop.tricentis.com");
-
-        //Maximize browser window
-        driver.manage().window().maximize();
-
-        //Set implicitly wait. Wait will be triggered when element is not present
-        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
+        JurisRegisterPageModel registerPageModel = new JurisRegisterPageModel(getDriver());
 
         //Click Register button
-
         registerPageModel.getBtnRegister().click();
 
         //Find input field for First name
@@ -65,7 +53,5 @@ public class JurisRegistrationTest {
         //Verify registration is successful
         Assert.assertTrue(registerPageModel.getTxtSuccessResult().isDisplayed());
         Assert.assertEquals("Your registration completed", registerPageModel.getTxtSuccessResult().getText());
-
-        driver.quit();
     }
 }
