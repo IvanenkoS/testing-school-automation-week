@@ -31,6 +31,7 @@ public class SearchTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find input field Search
+       
         WebElement txtSearch = driver.findElement(By.xpath("//input[@id='small-searchterms']"));
         txtSearch.sendKeys("$100 Physical Gift Card");
 
