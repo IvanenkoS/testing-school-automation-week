@@ -48,4 +48,11 @@ public class Cat {
     public boolean equals(Object obj) {
         return toString().equals(obj.toString());
     }
+
+    public void update(Cat cat){
+        this.setId(cat.getId());
+        this.setName(cat.getName());
+        this.setAge(cat.getAge());
+        this.setColor(cat.getColor());
+    }
 }
