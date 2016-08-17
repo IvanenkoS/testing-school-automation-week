@@ -26,56 +26,57 @@ public class HappyPathTest extends TestStarter{
         regularPageModel.getLnkProduct().click();
 
         //Add to cart
-        WebElement btnAddToCart = getDriver().findElement(By.cssSelector(""));
-        btnAddToCart.click();
+        regularPageModel.btnAddToCart().click();
 
         //Wait for Ajax element invisibility
         new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ajax-loading-block-window")));
 
         //Go to Shopping cart
-        WebElement lnkShoppingCart = getDriver().findElement(By.xpath(""));
-        lnkShoppingCart.click();
+        regularPageModel.getShoppingCart().click();
 
         //Checkout
-        WebElement cbxIAgree = getDriver().findElement(By.cssSelector(""));
-        WebElement btnCheckout = getDriver().findElement(By.cssSelector(""));
+        WebElement cbxIAgree = getDriver().findElement(By.cssSelector("#termsofservice"));
         cbxIAgree.click();
+        WebElement btnCheckout = getDriver().findElement(By.cssSelector("#checkout"));
         btnCheckout.click();
 
-        WebElement btnCheckoutAsGuest = getDriver().findElement(By.cssSelector(""));
+        WebElement btnCheckoutAsGuest = getDriver().findElement(By.xpath("//input[@value='Checkout as Guest']"));
         btnCheckoutAsGuest.click();
 
         //Provide billing information
-        getDriver().findElement(By.id("")).sendKeys("FirstNameT");
-        getDriver().findElement(By.id("")).sendKeys("LastNameT");
-        getDriver().findElement(By.id("")).sendKeys("email@Test.lv");
-        new Select(getDriver().findElement(By.id(""))).selectByVisibleText("Latvia");
-        getDriver().findElement(By.id("")).sendKeys("Riga");
-        getDriver().findElement(By.id("")).sendKeys("Test Street");
-        getDriver().findElement(By.id("")).sendKeys("LV-6789");
-        getDriver().findElement(By.id("")).sendKeys("23456789");
-        getDriver().findElement(By.cssSelector("")).click();
-        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
+        getDriver().findElement(By.id("BillingNewAddress_FirstName")).sendKeys("FirstNameT");
+        getDriver().findElement(By.id("BillingNewAddress_LastName")).sendKeys("LastNameT");
+        getDriver().findElement(By.id("BillingNewAddress_Email")).sendKeys("email@Test.lv");
+        new Select(getDriver().findElement(By.id("BillingNewAddress_CountryId"))).selectByVisibleText("Latvia");
+        getDriver().findElement(By.id("BillingNewAddress_City")).sendKeys("Riga");
+        getDriver().findElement(By.id("BillingNewAddress_Address1")).sendKeys("Test Street");
+        getDriver().findElement(By.id("BillingNewAddress_ZipPostalCode")).sendKeys("LV-6789");
+        getDriver().findElement(By.id("BillingNewAddress_PhoneNumber")).sendKeys("23456789");
 
-        getDriver().findElement(By.cssSelector("")).click();
-        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
+        getDriver().findElement(By.cssSelector("#opc-billing [title='Continue']")).click();
+        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#billing-please-wait")));
 
-        getDriver().findElement(By.cssSelector("")).click();
-        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
+        getDriver().findElement(By.cssSelector("#opc-shipping [title='Continue']")).click();
+        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#shipping-please-wait")));
 
-        getDriver().findElement(By.cssSelector("")).click();
-        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
+        getDriver().findElement(By.cssSelector("#opc-shipping_method [value='Continue']")).click();
+        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#shipping-method-please-wait")));
 
-        getDriver().findElement(By.cssSelector("")).click();
-        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
+        getDriver().findElement(By.cssSelector("#payment-method-buttons-container [value='Continue']")).click();
+        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#payment-method-please-wait")));
 
-        getDriver().findElement(By.cssSelector("")).click();
-        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("")));
+        getDriver().findElement(By.cssSelector("#opc-payment_info [value='Continue']")).click();
+        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#payment-info-please-wait")));
+
+        getDriver().findElement(By.cssSelector("#opc-confirm_order [value='Confirm']")).click();
+        new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("#confirm-order-please-wait")));
 
         //Verify order is completed
-        WebElement lblMessage = getDriver().findElement(By.cssSelector(""));
+        WebElement lblMessage = getDriver().findElement(By.cssSelector(".title"));
         Assert.assertEquals("Your order has been successfully processed!", lblMessage.getText());
-        getDriver().findElement(By.cssSelector("")).click();
-        Assert.assertTrue(getDriver().findElement(By.cssSelector("")).isDisplayed());
+        getDriver().findElement(By.cssSelector("[value='Continue']")).click();
+        Assert.assertTrue(getDriver().findElement(By.cssSelector(".topic-html-content-header")).isDisplayed());
+        Assert.assertEquals("http://demowebshop.tricentis.com/", getDriver().getCurrentUrl());
+        //Olgert
     }
 }
