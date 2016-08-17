@@ -26,13 +26,13 @@ public class HappyPathTest extends TestStarter{
         regularPageModel.getLnkProduct().click();
 
         //Add to cart
-        regularPageModel.btnAddToCart().click();
+        regularPageModel.getBtnnAddToCart().click();
 
         //Wait for Ajax element invisibility
         new WebDriverWait(getDriver(), 10).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ajax-loading-block-window")));
 
         //Go to Shopping cart
-        regularPageModel.getShoppingCart().click();
+        regularPageModel.getLnkShoppingCart().click();
 
         //Checkout
         WebElement cbxIAgree = getDriver().findElement(By.cssSelector("#termsofservice"));
