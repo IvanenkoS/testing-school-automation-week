@@ -38,34 +38,34 @@ public class BooksTest {
         driver.manage().timeouts().implicitlyWait(5000, TimeUnit.MILLISECONDS);
 
         //Find and Create web element Books
-        WebElement linkBooksTopMenu = driver.findElement(By.xpath(""));
+        WebElement linkBooksTopMenu = driver.findElement(By.xpath("//div[@class='header-menu']//a[contains(text(),'Books')]"));
 
         //Click at Books element
         linkBooksTopMenu.click();
 
         //Find Sorting products element
-        Select select = new Select(driver.findElement(By.xpath("")));
+        Select select = new Select(driver.findElement(By.xpath("//select[@id='products-orderby']")));
 
         //Sort products by name
         select.selectByVisibleText("Name: A to Z");
 
         //Add to cart Computer and Internet book
-        WebElement btnAddChartBlueJeans = driver.findElement(By.xpath(""));
+        WebElement btnAddChartBlueJeans = driver.findElement(By.xpath("//a[contains(text(),'Computing and Internet')]/../..//input[@class='button-2 product-box-add-to-cart-button']"));
         btnAddChartBlueJeans.click();
 
         //Close cart popup
-        WebElement closeButton = driver.findElement(By.xpath(""));
+        WebElement closeButton = driver.findElement(By.xpath("//span[@title='Close']"));
         closeButton.click();
 
         //Wait for Ajax element invisibility
         new WebDriverWait(driver, 20).until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".ajax-loading-block-window")));
 
         //Go to Shopping chart
-        WebElement lnkShoppingCart=driver.findElement(By.cssSelector(""));
+        WebElement lnkShoppingCart=driver.findElement(By.xpath("//span[contains(text(),'Shopping cart')]/.."));
         lnkShoppingCart.click();
 
         //Verify then product appears in shopping cart
-        WebElement lblProduct=driver.findElement(By.xpath(""));
+        WebElement lblProduct=driver.findElement(By.xpath("//a[@class='product-name']/a"));
         Assert.assertEquals("Computing and Internet", lblProduct.getText());
     }
 

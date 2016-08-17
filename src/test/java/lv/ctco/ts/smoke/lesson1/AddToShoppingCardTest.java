@@ -48,7 +48,7 @@ public class AddToShoppingCardTest {
         lnkShoppingCart.click();
 
         //Verify then product appears in shopping cart
-        WebElement lblProduct=driver.findElement(By.xpath(""));
+        WebElement lblProduct=driver.findElement(By.xpath("//h2[@class='product-title']/a"));
         Assert.assertEquals("Blue Jeans", lblProduct.getText());
     }
 
