@@ -24,21 +24,16 @@ public class JSONService {
     @GET
     @Path("/cat/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Object getCatInJSON(@PathParam("id") int id) {
-        try {
-            System.out.println(cats.get(id));
-            return Response.status(200).entity(cats.get(id).toString()).build();
-        } catch (IndexOutOfBoundsException e) {
-            return Response.status(200).entity(format("Cat with id=%s is not found", id)).build();
-        }
-
+    public Cat getCatInJSON(@PathParam("id") int id) {
+        System.out.println(cats.get(id));
+        return cats.get(id);
     }
 
     @POST
     @Path("/cat")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCatInJSON(Cat cat) {
-        cat.setId(cats.size());
+        //cat.setId(cats.size());
         String result = "Cat saved : " + cat;
         cats.add(cat);
         System.out.println("Add new cat to list:" + cat);

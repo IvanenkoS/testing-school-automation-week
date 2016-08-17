@@ -2,18 +2,9 @@ package lv.ctco.ts.smoke.restexample;
 
 public class Cat {
 
-    int id;
     String name;
     int age;
     String color;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -41,7 +32,7 @@ public class Cat {
 
     @Override
     public String toString() {
-        return "Cat [id="+id+", name=" + name + ", age=" + age + ", color="+color+"]";
+        return "Cat [name=" + name + ", age=" + age + ", color="+color+"]";
     }
 
     @Override
@@ -50,7 +41,6 @@ public class Cat {
     }
 
     public void update(Cat cat){
-        this.setId(cat.getId());
         this.setName(cat.getName());
         this.setAge(cat.getAge());
         this.setColor(cat.getColor());
