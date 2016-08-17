@@ -13,12 +13,6 @@ public class SearchPage extends Page {
             super(browser);
         }
 
-    public SearchPage search(String textSearch) {
-        browser.type(By.xpath("//input[@id='small-searchterms']"), textSearch);
-        browser.click(By.cssSelector(".search-box input[value='Search']"));
-        return new SearchPage(browser);
-    }
-
     public SearchPage addToCartFirstItem() {
         browser.click(By.xpath("//div[@class='search-results']//input[@value='Add to cart']"));
         browser.waitForElementInvisibility(By.cssSelector(".ajax-loading-block-window"));

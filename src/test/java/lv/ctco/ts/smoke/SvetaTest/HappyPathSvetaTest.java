@@ -5,10 +5,7 @@ import lv.ctco.ts.smoke.SvetaPages.ShoppingCartPage;
 import lv.ctco.ts.smoke.SvetaPages.HomePage;
 import lv.ctco.ts.smoke.SvetaPages.RegisterPage;
 import lv.ctco.ts.smoke.SvetaPages.SearchPage;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import java.util.Random;
 
 public class HappyPathSvetaTest {
@@ -16,7 +13,7 @@ public class HappyPathSvetaTest {
         public HomePage homePage;
         public RegisterPage registerPage;
         public SearchPage searchPage;
-//        public ShoppingCartPage shoppingCartPage;
+        public ShoppingCartPage shoppingCartPage;
 
     @Before
         public void setUp() {
@@ -26,8 +23,7 @@ public class HappyPathSvetaTest {
         }
 
     @Test
-        public void registerTest() {
-
+        public void shoppingTest() {
             Random rn = new Random();
             int i = rn.nextInt(9999);
 
@@ -37,25 +33,23 @@ public class HappyPathSvetaTest {
             String actualResultUserEmail = homePage.getUserEmail();
             String expectResultUserEmail = ("Jolie"+i+"@gmail.com");
             Assert.assertEquals(actualResultUserEmail, expectResultUserEmail);
+
+            searchPage = homePage.search("Casual Golf Belt");
+            searchPage.addToCartFirstItem();
+            shoppingCartPage = searchPage.openShoppingCartPage();
+
+            shoppingCartPage.checkout();
+
+            shoppingCartPage.checkoutPage("Latvia", "Riga", "Test Street","LV-6789","23456789");
+
+            Assert.assertEquals("Your order has been successfully processed!", shoppingCartPage.getTitle());
+            shoppingCartPage.checkoutPage1();
         }
-    @Test
-    public void searchTest() {
-
-        searchPage = homePage.search("blue and green");
-        searchPage.addToCartFirstItem();
-        ShoppingCartPage shoppingCartPage=searchPage.openShoppingCartPage();
-
-//        registerPage.register("Angelina"+i, "Jolie"+i, "Jolie"+i+"@gmail.com", "jolie123");
-//
-//        String actualResultUserEmail = homePage.getUserEmail();
-//        String expectResultUserEmail = ("Jolie"+i+"@gmail.com");
-//        Assert.assertEquals(actualResultUserEmail, expectResultUserEmail);
-    }
 
     @After
         public void turnDown() {
             homePage.closeBrowser();
-        }
+    }
 }
 
 

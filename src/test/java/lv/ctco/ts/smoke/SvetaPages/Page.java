@@ -24,7 +24,12 @@ public class Page {
     public ShoppingCartPage openShoppingCartPage() {
         browser.click(By.xpath("//li[@id='topcartlink']//span[@class='cart-label']"));
         return new ShoppingCartPage(browser);
+   }
+
+    public String getUserEmail() {
+        return browser.select(By.xpath("//div[@class='header-links']//a[@class='account']")).getText();
     }
+
 
 //        public String getUserEmail() {
 //            String currentUserEmail = browser.getText(By.xpath("//div[@class='header-links']//a[@class='account']"));

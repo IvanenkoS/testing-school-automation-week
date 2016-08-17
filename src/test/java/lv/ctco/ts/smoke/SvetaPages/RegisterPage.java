@@ -25,7 +25,5 @@ public class RegisterPage extends Page {
             browser.click(By.xpath("//div[@class='buttons']/input[@id='register-button']"));
             //Find button Continue
             browser.click(By.xpath("//div[@class='page registration-result-page']//input[@value='Continue']"));
-
-           // return new HomePage(browser);
         }
 }

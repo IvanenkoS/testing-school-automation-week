@@ -35,9 +35,9 @@ public class HomePage extends Page {
 //        return browser.getText(By.xpath("//div[@class='header-links']//a[@class='account']"));
 //    }
 
-    public String getUserEmail() {
-        return browser.select(By.xpath("//div[@class='header-links']//a[@class='account']")).getText();
-    }
+//    public String getUserEmail() {
+//        return browser.select(By.xpath("//div[@class='header-links']//a[@class='account']")).getText();
+//    }
 
 //    public HomePage logOut() {
 //        browser.click(By.xpath("//a[@class='ico-logout']"));

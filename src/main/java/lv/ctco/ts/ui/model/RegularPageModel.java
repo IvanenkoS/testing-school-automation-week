@@ -47,9 +47,8 @@ public class RegularPageModel {
     public WebElement getBtnContinue4(){return driver.findElement(By.cssSelector("#shipping-method-buttons-container [value='Continue']"));}
     public WebElement getBtnContinue5(){return driver.findElement(By.cssSelector("#payment-method-buttons-container [value='Continue']"));}
     public WebElement getBtnContinue6(){return driver.findElement(By.xpath("//li[@id='opc-payment_info']//input"));}
-    public WebElement getTitle(){return driver.findElement(By.xpath("html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/div[1]/strong"));}
+    public WebElement getTitle(){return driver.findElement(By.xpath("div[@class='page checkout-page']//div[@class='title']/strong"));}
     public WebElement getBtnConfirm(){return driver.findElement(By.cssSelector("[value='Confirm']"));}
-    ////div[@class='page checkout-page']//div[@class='title']/strong
     public WebElement getBtnContinue7(){return driver.findElement(By.cssSelector("[value='Continue']"));}
 
 }
