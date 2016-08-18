@@ -1,10 +1,8 @@
-package lv.ctco.ts.smoke.restexample;
+package lv.ctco.ts.restexample;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
-import java.util.List;
 
 public class App {
 

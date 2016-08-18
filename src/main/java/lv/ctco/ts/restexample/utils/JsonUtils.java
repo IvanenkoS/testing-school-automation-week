@@ -1,8 +1,9 @@
-package lv.ctco.ts.smoke.restexample;
+package lv.ctco.ts.restexample.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
+import lv.ctco.ts.restexample.beans.Cat;
 
 import java.io.*;
 import java.lang.reflect.Type;

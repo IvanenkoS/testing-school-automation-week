@@ -1,4 +1,4 @@
-package lv.ctco.ts.smoke.restexample;
+package lv.ctco.ts.restexample.beans;
 
 public class Cat {
 

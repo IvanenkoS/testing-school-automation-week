@@ -1,4 +1,7 @@
-package lv.ctco.ts.smoke.restexample;
+package lv.ctco.ts.restexample;
+
+import lv.ctco.ts.restexample.beans.Cat;
+import lv.ctco.ts.restexample.utils.JsonUtils;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -17,7 +20,7 @@ public class JSONService {
     @Path("/cat")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Cat> getCatInJSON() {
-        cats=JsonUtils.getCats();
+        cats = JsonUtils.getCats();
         System.out.println(cats);
         return cats;
     }
@@ -35,13 +38,11 @@ public class JSONService {
     @Path("/cat")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCatInJSON(Cat cat) {
-        //cat.setId(cats.size());
-        String result = "Cat saved : " + cat;
         cats=JsonUtils.getCats();
         cats.add(cat);
         System.out.println("Add new cat to list:" + cat);
         JsonUtils.saveToFile(cats);
-        return Response.status(201).entity(result).build();
+        return Response.status(201).entity("Cat saved : " + cat).build();
     }
 
     @PUT
